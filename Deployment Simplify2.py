@@ -55,7 +55,7 @@ query = """
     WHERE cr."Sub Dept" LIKE 'Deployment' OR cr."Sub Dept" LIKE 'Repair SRT'
     """
 Mini_Roster = pd.read_sql(query, conn)
-Mini_Roster.set_index('Agent Name')
+Mini_Roster.set_index('F,L Name')
 #print(Mini_Roster.keys())
 print('This is the SQL query:\n\n', (Mini_Roster.head()))
 
@@ -79,7 +79,7 @@ new_header['Created By'] = new_header['Created By'].str.upper()
 #print(new_header.keys())
 print('This is the Deploy table with new headers:\n\n', (new_header))
 # Merging the SQL query mini roster to the Deploy_Unclean df
-Deploy_Cleaner = pd.merge(Mini_Roster, new_header, how = 'left', left_on = 'Agent Name', right_on = 'Created By')
+Deploy_Cleaner = pd.merge(Mini_Roster, new_header, how = 'left', left_on = 'F,L Name', right_on = 'Created By')
 print('This is the Deploy Cleaner table:\n\n', (Deploy_Cleaner.head()))
 
 # Dropping nulls is an option, for visibility i want to keep the N/As
