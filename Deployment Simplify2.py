@@ -44,14 +44,15 @@ conn     = sqlalchemy.create_engine(connstr)
 
 query = """
     SELECT
-    Upper(cr."First Last - CallMiner") AS "Agent Name"
+    Upper(cr."First Last - CallMiner") AS "F,L Name"
+    ,UPPER(cr."Last, First for Report") AS "L,F Name"
     ,cr."Site" 
     ,cr."Sup" 
     ,cr."Dept" 
     ,cr."Sub Dept" 
     ,cr."Term" 
     FROM OPS_REPORTING.CC_ROSTER cr 
-    WHERE cr."Sub Dept" LIKE 'Deployment' OR cr."Sub Dept" LIKE 'Unknown'
+    WHERE cr."Sub Dept" LIKE 'Deployment' OR cr."Sub Dept" LIKE 'Repair SRT'
     """
 Mini_Roster = pd.read_sql(query, conn)
 Mini_Roster.set_index('Agent Name')
