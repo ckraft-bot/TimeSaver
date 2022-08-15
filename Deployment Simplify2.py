@@ -52,7 +52,7 @@ query = """
     ,cr."Sub Dept" 
     ,cr."Term" 
     FROM OPS_REPORTING.CC_ROSTER cr 
-    WHERE cr."Sub Dept" LIKE 'Deployment' OR cr."Sub Dept" LIKE 'Repair SRT'
+    WHERE cr."Sub Dept" LIKE 'Deployment' OR cr."Sub Dept" LIKE 'Unknown' OR cr."Sub Dept" LIKE 'Repair SRT'
     """
 Mini_Roster = pd.read_sql(query, conn)
 Mini_Roster.set_index('F,L Name')
