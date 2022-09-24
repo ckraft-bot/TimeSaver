@@ -23,7 +23,7 @@ def save_attachemnts(messages,today,path):
 
 
 def main():
-    path = r"\\usfl04fsx04v.hsus.hsa.int\data\Contact Center Reporting\Misc\Project Dump\Deploy Attachments"
+    path = r"\\path\Contact Center Reporting\Misc\Project Dump\Deploy Attachments"
     today = datetime.date.today()
     outlook = win32com.client.Dispatch("Outlook.Application").GetNamespace("MAPI") #GetNameSpace ("MAPI") returns the Outlook NameSpace object from the Application object.
     inbox = outlook.GetDefaultFolder(6)  
